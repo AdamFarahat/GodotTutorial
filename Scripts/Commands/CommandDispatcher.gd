@@ -13,4 +13,4 @@ signal DISPLAY_MESSAGE(message)
 signal DISPLAY_COMMAND_PROMPT
 signal DISPLAY_CLEAR
 
-signal LOAD_MAP(currentMap, newMapPath, spawnpoint, facing)
+signal LOAD_MAP(currentMap,newMapPath, spawnpoint, facing)

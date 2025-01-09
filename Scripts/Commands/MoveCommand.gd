@@ -9,8 +9,8 @@ func _init(dir):
 	direction = dir
 
 func execute():
-	CommandDispatcher.PLAYER_MOVE.emit("PLAYER_MOVE",direction)
-	emit_signal("COMMAND_PROCESSED", getCommand_Label())
+	CommandDispatcher.PLAYER_MOVE.emit(direction)
+	COMMAND_PROCESSED.emit(getCommand_Label())
 
 func getDirectionString() -> String:
 	return Map.Direction.keys()[direction]

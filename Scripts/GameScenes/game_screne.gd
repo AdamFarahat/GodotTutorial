@@ -6,7 +6,7 @@ class_name GameScreen
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	CommandDispatcher.LOAD_MAP.emit(null, GameManager.defaultMapPath, null, Map.Direction.North)
+	CommandDispatcher.LOAD_MAP.emit(GameManager.currentMapPath,null, Map.Direction.North)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

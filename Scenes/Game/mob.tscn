@@ -122,8 +122,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Mob" type="Node2D"]
+[node name="Mob" type="Node2D" node_paths=PackedStringArray("animator")]
 script = ExtResource("1_7cq0g")
+animator = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 8)
