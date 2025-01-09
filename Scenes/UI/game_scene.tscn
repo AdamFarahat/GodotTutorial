@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://mf0bjs7lar32"]
+
+[ext_resource type="Script" path="res://Scripts/GameScenes/game_screne.gd" id="1_hfpih"]
+[ext_resource type="Texture2D" uid="uid://cohpmqvpwlh61" path="res://gfx/UI/main_frame.png" id="2_f7gyb"]
+[ext_resource type="Script" path="res://Scripts/Commands/CommandProcessor.gd" id="2_jyxfw"]
+[ext_resource type="FontFile" uid="uid://b6v34xnu4p4ta" path="res://Fonts/alagard_by_pix3m-d6awiwp.ttf" id="3_f8bsd"]
+[ext_resource type="Script" path="res://Scripts/Maps/map_container.gd" id="3_oy27c"]
+[ext_resource type="Script" path="res://Scripts/UI/message_console.gd" id="5_1uaf7"]
+[ext_resource type="PackedScene" uid="uid://e6qc7ki1v2py" path="res://Scenes/UI/MessageLine.tscn" id="6_3t6y4"]
+
+[node name="Game" type="Node" node_paths=PackedStringArray("map")]
+script = ExtResource("1_hfpih")
+map = NodePath("MapContainer")
+
+[node name="CommandProcessor" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+script = ExtResource("2_jyxfw")
+
+[node name="MapContainer" type="Node" parent="." node_paths=PackedStringArray("entities")]
+script = ExtResource("3_oy27c")
+entities = NodePath("Entities")
+
+[node name="Entities" type="Node" parent="MapContainer"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundFrame" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f7gyb")
+stretch_mode = 2
+
+[node name="Left Display" type="MarginContainer" parent="UI"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 167.0
+offset_bottom = 216.0
+
+[node name="Background" type="ColorRect" parent="UI/Left Display"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Contents" type="VBoxContainer" parent="UI/Left Display"]
+layout_mode = 2
+
+[node name="CommandMenu" type="VBoxContainer" parent="UI/Left Display/Contents"]
+layout_mode = 2
+
+[node name="Pass Button" type="Button" parent="UI/Left Display/Contents/CommandMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f8bsd")
+text = "Pass"
+
+[node name="Message Console" type="MarginContainer" parent="UI" node_paths=PackedStringArray("scrollContainer", "messages")]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 230.0
+offset_right = 627.0
+offset_bottom = 345.0
+script = ExtResource("5_1uaf7")
+scrollContainer = NodePath("ScrollContainer")
+messages = NodePath("ScrollContainer/Messages")
+
+[node name="Background" type="ColorRect" parent="UI/Message Console"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Message Console"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Messages" type="VBoxContainer" parent="UI/Message Console/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MessageLine" parent="UI/Message Console/ScrollContainer/Messages" instance=ExtResource("6_3t6y4")]
+layout_mode = 2
+
+[connection signal="BROADCAST_COMMAND" from="CommandProcessor" to="UI/Message Console" method="_on_command_broadcast"]
+[connection signal="timeout" from="CommandProcessor" to="CommandProcessor" method="_on_timeout"]
+[connection signal="pressed" from="UI/Left Display/Contents/CommandMenu/Pass Button" to="." method="_on_pass_button_pressed"]

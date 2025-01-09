@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://caypwgdjy4vkh"]
+
+[ext_resource type="Script" path="res://Scripts/UI/LoadingScreen/loading_screen.gd" id="1_aq3mf"]
+[ext_resource type="Theme" uid="uid://d2r5c60lgsyjr" path="res://Themes/defaultTheme.tres" id="1_nhuwd"]
+[ext_resource type="Texture2D" uid="uid://dshh7t8l0dn8f" path="res://gfx/UI/loading_frame.png" id="2_x70ma"]
+[ext_resource type="Texture2D" uid="uid://cg475k4emme1j" path="res://gfx/UI/loading_bar.png" id="3_roofv"]
+
+[node name="Loading Screen" type="Control" node_paths=PackedStringArray("loadingBar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aq3mf")
+loadingBar = NodePath("CenterContainer/VBoxContainer/LoadingBar")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_nhuwd")
+theme_override_font_sizes/font_size = 30
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="LoadingBar" type="TextureProgressBar" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_over = ExtResource("2_x70ma")
+texture_progress = ExtResource("3_roofv")

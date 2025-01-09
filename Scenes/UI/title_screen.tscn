@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://jtfe15c3umma"]
+
+[ext_resource type="Script" path="res://Scripts/TitleScreen/title_screen.gd" id="1_tslee"]
+[ext_resource type="Texture2D" uid="uid://cdyxtvqtlmaci" path="res://gfx/titlescreen/tree-3094982_1280.jpg" id="1_urc5b"]
+[ext_resource type="FontFile" uid="uid://b6v34xnu4p4ta" path="res://Fonts/alagard_by_pix3m-d6awiwp.ttf" id="2_pku1f"]
+[ext_resource type="Theme" uid="uid://d2r5c60lgsyjr" path="res://Themes/defaultTheme.tres" id="3_j3pj5"]
+[ext_resource type="Script" path="res://Scripts/TitleScreen/version_number.gd" id="4_ohbnu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_msr3h"]
+font = ExtResource("2_pku1f")
+font_size = 45
+font_color = Color(1, 0, 0.239216, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.580392)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kyt74"]
+font = ExtResource("2_pku1f")
+font_color = Color(1, 1, 0.00392157, 1)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tslee")
+
+[node name="BackgroundImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_urc5b")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Content/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/line_spacing = 20
+theme_override_constants/shadow_offset_x = 20
+theme_override_constants/shadow_offset_y = 20
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 20
+text = "Legacy of the Ancient Questor"
+label_settings = SubResource("LabelSettings_msr3h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="MarginContainer" parent="Content/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonMenu" type="VBoxContainer" parent="Content/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NewGame" type="Button" parent="Content/VBoxContainer/HBoxContainer/ButtonMenu"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("3_j3pj5")
+theme_override_font_sizes/font_size = 25
+text = "New Game"
+
+[node name="LoadGame" type="Button" parent="Content/VBoxContainer/HBoxContainer/ButtonMenu"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("3_j3pj5")
+theme_override_font_sizes/font_size = 25
+text = "Load Game"
+
+[node name="Credits" type="Button" parent="Content/VBoxContainer/HBoxContainer/ButtonMenu"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("3_j3pj5")
+theme_override_font_sizes/font_size = 25
+text = "Credits"
+
+[node name="Version Number" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -23.0
+offset_right = 167.0
+offset_bottom = -7.0
+grow_vertical = 0
+text = "Version: "
+label_settings = SubResource("LabelSettings_kyt74")
+script = ExtResource("4_ohbnu")
+
+[connection signal="pressed" from="Content/VBoxContainer/HBoxContainer/ButtonMenu/NewGame" to="." method="_on_new_game_pressed"]

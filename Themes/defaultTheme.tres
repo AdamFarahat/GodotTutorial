@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://d2r5c60lgsyjr"]
+
+[ext_resource type="FontFile" uid="uid://b6v34xnu4p4ta" path="res://Fonts/alagard_by_pix3m-d6awiwp.ttf" id="1_geovh"]
+[ext_resource type="Texture2D" uid="uid://dwsda6c723q51" path="res://gfx/UI/buttonSquare_brown_pressed.png" id="2_gy187"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xqf4y"]
+texture = ExtResource("2_gy187")
+texture_margin_left = 7.0
+texture_margin_top = 4.0
+texture_margin_right = 6.0
+texture_margin_bottom = 8.0
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 1, 44, 47)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7wbch"]
+texture = ExtResource("2_gy187")
+texture_margin_left = 7.0
+texture_margin_top = 4.0
+texture_margin_right = 6.0
+texture_margin_bottom = 8.0
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 1, 44, 47)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e4e5w"]
+texture = ExtResource("2_gy187")
+texture_margin_left = 7.0
+texture_margin_top = 4.0
+texture_margin_right = 6.0
+texture_margin_bottom = 8.0
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 45, 45)
+
+[resource]
+Button/fonts/font = ExtResource("1_geovh")
+Button/styles/hover = SubResource("StyleBoxTexture_xqf4y")
+Button/styles/normal = SubResource("StyleBoxTexture_7wbch")
+Button/styles/pressed = SubResource("StyleBoxTexture_e4e5w")
+Label/fonts/font = ExtResource("1_geovh")
+RichTextLabel/fonts/normal_font = ExtResource("1_geovh")
